@@ -9067,6 +9067,7 @@
             "GR Text Overlay",
             "GR Tile and Border Image",
             "GR Tile and Border Image Random Flip",
+            "GRAnySelector",
             "GRAudioSelector",
             "GRImageSelector",
             "GRLoraLoader",
@@ -30934,6 +30935,7 @@
             "MoonvalleyTxt2VideoNode",
             "MoonvalleyVideo2VideoNode",
             "Morphology",
+            "NAGuidance",
             "NormalizeVideoLatentStart",
             "OpenAIChatConfig",
             "OpenAIChatNode",
@@ -45900,6 +45902,7 @@
     ],
     "https://github.com/mirabarukaso/ComfyUI_MiraSubPack": [
         [
+            "ImageCropTilesByPixels_MiraSubPack",
             "ImageCropTiles_MiraSubPack",
             "ImageMergeByPixelAlign_MiraSubPack",
             "ImageTiledKSamplerWithTagger_MiraSubPack",
