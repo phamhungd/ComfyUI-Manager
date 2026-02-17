@@ -38417,16 +38417,6 @@
             "description": "ComfyUI audio-reactive animation node combining RyanOnTheInside's reactive features with Fillip's path animation for creating audio-driven visual animations. (Description by CC)"
         },
         {
-            "author": "techzuhaib",
-            "title": "FaceCLIP-ComfyUI",
-            "reference": "https://github.com/techzuhaib/FaceCLIP-ComfyUI",
-            "files": [
-                "https://github.com/techzuhaib/FaceCLIP-ComfyUI"
-            ],
-            "install_type": "git-clone",
-            "description": "FaceCLIP nodes for ComfyUI providing joint embeddings from aligned face images plus text prompts, and identity-preserving image synthesis using fine-tuned SDXL UNet. (Description by CC)"
-        },
-        {
             "author": "tuki0918",
             "title": "comfyui-image-expand-nodes",
             "reference": "https://github.com/tuki0918/comfyui-image-expand-nodes",
@@ -41664,6 +41654,17 @@
             "description": "Essential Nodes Pack for Images Processing for ComfyUI, with a live embedded preview inside the node (no queue) for supported chains."
         },
         {
+            "author": "MajoorWaldi",
+            "title": "ComfyUI-Majoor-AssetsManager",
+            "id": "majoor-assetsmanager",
+            "reference": "https://github.com/MajoorWaldi/ComfyUI-Majoor-AssetsManager",
+            "files": [
+                "https://github.com/MajoorWaldi/ComfyUI-Majoor-AssetsManager"
+            ],
+            "install_type": "git-clone",
+            "description": "Majoor Assets Manager is an advanced asset browser for ComfyUI with search, metadata extraction, rating/tags, workflow metadata parsing, and integrated image/video/audio asset management."
+        },
+        {
             "author": "sinanzoo2nd",
             "title": "ComfyUI Seed Wildcard Pack",
             "reference": "https://github.com/sinanzoo2nd/ComfyUI-Seed-Wildcard-Pack",
@@ -42360,16 +42361,6 @@
             ],
             "install_type": "git-clone",
             "description": "High-performance custom node for LTX2 video generation designed to reduce GPU usage, VRAM requirements, and temperature on consumer GPUs."
-        },
-        {
-            "author": "SlothHole",
-            "title": "Imitatoes",
-            "reference": "https://github.com/SlothHole/Imitatoes",
-            "files": [
-                "https://github.com/SlothHole/Imitatoes"
-            ],
-            "install_type": "git-clone",
-            "description": "Build a ComfyUI \"self-improving\" workflow where each render is evaluated by a local vision LLM, which then edits the prompt/parameters and triggers another run."
         },
         {
             "author": "BobJohnson24",
@@ -43448,17 +43439,6 @@
             ],
             "install_type": "unzip",
             "description": "Various image processing nodes."
-        },
-        {
-            "author": "MajoorWaldi",
-            "title": "ComfyUI-Majoor-AssetsManager",
-            "id": "majoor-assetsmanager",
-            "reference": "https://github.com/MajoorWaldi/ComfyUI-Majoor-AssetsManager",
-            "files": [
-                "https://github.com/MajoorWaldi/ComfyUI-Majoor-AssetsManager"
-            ],
-            "install_type": "git-clone",
-            "description": "Majoor Assets Manager is an advanced asset browser for ComfyUI with search, metadata extraction, rating/tags, workflow metadata parsing, and integrated image/video/audio asset management."
         },
         {
             "author": "aimingfail",
