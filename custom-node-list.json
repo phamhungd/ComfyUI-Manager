@@ -43055,6 +43055,16 @@
             "tags": ["vision", "language", "multimodal", "qwen", "smart_caching", "prompt_caching", "multilingual", "style_detection", "performance", "wan2.2", "video", "i2v", "t2v", "cinematography", "abliterated", "nsfw", "enhanced", "fork", "stable"],
             "version": "2.0.8"
         },
+        {
+            "author": "kadima-tech",
+            "title": "ComfyUI-Draggen",
+            "reference": "https://github.com/kadima-tech/comfyui-draggen",
+            "files": [
+                "https://github.com/kadima-tech/comfyui-draggen"
+            ],
+            "install_type": "git-clone",
+            "description": "Load and use your Draggen.io moodboards directly in ComfyUI."
+        },
 
 
 
@@ -43450,16 +43460,6 @@
             ],
             "install_type": "unzip",
             "description": "This is a node to convert an image into a CMYK Halftone dot image."
-        },
-        {
-            "author": "kadima-tech",
-            "title": "ComfyUI-Draggen",
-            "reference": "https://github.com/kadima-tech/comfyui-draggen",
-            "files": [
-                "https://github.com/kadima-tech/comfyui-draggen"
-            ],
-            "install_type": "git-clone",
-            "description": "Load and use your Draggen.io moodboards directly in ComfyUI."
         }
     ]
 }

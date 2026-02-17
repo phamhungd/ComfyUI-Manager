@@ -1,6 +1,16 @@
 {
     "custom_nodes": [
         {
+            "author": "kadima-tech",
+            "title": "ComfyUI-Draggen",
+            "reference": "https://github.com/kadima-tech/comfyui-draggen",
+            "files": [
+                "https://github.com/kadima-tech/comfyui-draggen"
+            ],
+            "install_type": "git-clone",
+            "description": "Load and use your Draggen.io moodboards directly in ComfyUI."
+        },
+        {
             "author": "MajoorWaldi",
             "title": "ComfyUI-Majoor-AssetsManager",
             "id": "majoor-assetsmanager",
