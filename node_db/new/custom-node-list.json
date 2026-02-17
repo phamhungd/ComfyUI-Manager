@@ -1,6 +1,17 @@
 {
     "custom_nodes": [
         {
+            "author": "TK3R",
+            "title": "ComfyUI TK3R Extensions",
+            "id": "comfyui_tk3r_ext",
+            "reference": "https://github.com/TK3R/ComfyUI_TK3R_Ext",
+            "files": [
+                "https://github.com/TK3R/ComfyUI_TK3R_Ext"
+            ],
+            "install_type": "git-clone",
+            "description": "A few enhanced versions of vanilla nodes, mainly Qwen/ZImage controlnet nodes & scheduled CFG guider, and some utility nodes."
+        },
+        {
             "author": "Night1099",
             "title": "ComfyUI-PBRFusion4",
             "id": "comfyui-pbrfusion4",
@@ -683,96 +694,6 @@
             ],
             "install_type": "git-clone",
             "description": "A user-friendly way to selectively transform parts of your starting image in WAN Image-to-Video generation with advanced masking and person detection."
-        },
-        {
-            "author": "harishcmgit",
-            "title": "comfyui_ds",
-            "reference": "https://github.com/harishcmgit/comfyui_ds",
-            "files": [
-                "https://github.com/harishcmgit/comfyui_ds"
-            ],
-            "install_type": "git-clone",
-            "description": "A custom ComfyUI node that implements advanced document scanning with automatic perspective correction and multiple enhancement options."
-        },
-        {
-            "author": "errew",
-            "title": "ComfyUI-Wireless",
-            "reference": "https://github.com/errew/ComfyUI-Wireless",
-            "files": [
-                "https://github.com/errew/ComfyUI-Wireless"
-            ],
-            "install_type": "git-clone",
-            "description": "A clean, lightweight ComfyUI plugin to transmit data wirelessly between nodes using a global key-value store."
-        },
-        {
-            "author": "Shiba-2-shiba",
-            "title": "ComfyUI-HSWQ-Quantizer",
-            "reference": "https://github.com/Shiba-2-shiba/ComfyUI-HSWQ-Quantizer",
-            "files": [
-                "https://github.com/Shiba-2-shiba/ComfyUI-HSWQ-Quantizer"
-            ],
-            "install_type": "git-clone",
-            "description": "Unofficial ComfyUI reference implementation of Hybrid Sensitivity Weighted Quantization (HSWQ) for model optimization."
-        },
-        {
-            "author": "domprosys",
-            "title": "ComfyUI-LTXVideo-Extra",
-            "reference": "https://github.com/domprosys/ComfyUI-LTXVideo-Extra",
-            "files": [
-                "https://github.com/domprosys/ComfyUI-LTXVideo-Extra"
-            ],
-            "install_type": "git-clone",
-            "description": "Extra nodes for LTX-2 video generation in ComfyUI."
-        },
-        {
-            "author": "sugarkwork",
-            "title": "comfyui_smart_character_detailer",
-            "reference": "https://github.com/sugarkwork/comfyui_smart_character_detailer",
-            "files": [
-                "https://github.com/sugarkwork/comfyui_smart_character_detailer"
-            ],
-            "install_type": "git-clone",
-            "description": "Extended ComfyUI node with WD14 Tagger-based image analysis and automatic character identification to apply optimized prompts dynamically. (Description by CC)"
-        },
-        {
-            "author": "engineer6980",
-            "title": "ComfyUI-Image-Cipher",
-            "reference": "https://github.com/engineer6980/ComfyUI-Image-Cipher",
-            "files": [
-                "https://github.com/engineer6980/ComfyUI-Image-Cipher"
-            ],
-            "install_type": "git-clone",
-            "description": "ComfyUI custom node for image privacy protection using RGB channel independent differential bit-shifting encryption. (Description by CC)"
-        },
-        {
-            "author": "MushroomFleet",
-            "title": "ComfyUI-Zero2JSON",
-            "reference": "https://github.com/MushroomFleet/ComfyUI-Zero2JSON",
-            "files": [
-                "https://github.com/MushroomFleet/ComfyUI-Zero2JSON"
-            ],
-            "install_type": "git-clone",
-            "description": "ZeroPrompt integration for FLUX2-JSON providing deterministic, profile-based procedural text generation for structured prompt building."
-        },
-        {
-            "author": "thezveroboy",
-            "title": "ComfyUI-klein4-9multiangle",
-            "reference": "https://github.com/thezveroboy/ComfyUI-klein4-9multiangle",
-            "files": [
-                "https://github.com/thezveroboy/ComfyUI-klein4-9multiangle"
-            ],
-            "install_type": "git-clone",
-            "description": "Klein4&9 MultiAngle Prompt is a ComfyUI node that lets you quickly set the camera angle and distance to the subject in your prompt without typing long descriptions manually."
-        },
-        {
-            "author": "huyl3-cpu",
-            "title": "ComfyUI-PyTorch210Patcher",
-            "reference": "https://github.com/huyl3-cpu/ComfyUI-PyTorch210Patcher",
-            "files": [
-                "https://github.com/huyl3-cpu/ComfyUI-PyTorch210Patcher"
-            ],
-            "install_type": "git-clone",
-            "description": "Auto-fixes WanVideoModel for PyTorch 2.10.0+ compatibility by automatically patching the model class to work with both PyTorch 2.9.0 and 2.10.0+."
         }
     ]
 }
