@@ -6112,7 +6112,7 @@
             "title_aux": "RangeToString"
         }
     ],
-    "https://github.com/DemonAlone/SimpeStringGenerator_ComfyUI": [
+    "https://github.com/DemonAlone/DemonAlone-nodes-ComfyUI": [
         [
             "AnyAdapterNode",
             "AnyConcatNode",
@@ -6146,7 +6146,7 @@
             "\u0421heckpointSelectorNode"
         ],
         {
-            "title_aux": "SimpeStringGenerator_ComfyUI"
+            "title_aux": "DemonAlone-nodes-ComfyUI"
         }
     ],
     "https://github.com/DemonNCoding/PromptGenerator12Columns": [
@@ -15151,6 +15151,19 @@
             "title_aux": "ComfyUI_PromptStyler"
         }
     ],
+    "https://github.com/Night1099/COMFYUI-PBRFusion4": [
+        [
+            "AIXPOLY_BlackThreshold",
+            "AIXPOLY_ClampResolution",
+            "AIXPOLY_ConditionalUpscale",
+            "AIXPOLY_NormalMapFlipY",
+            "AIXPOLY_PBRFusion4SimpleDepthAndNormalGenerator",
+            "AIXPOLY_SmartUpscaleCalculator"
+        ],
+        {
+            "title_aux": "ComfyUI-PBRFusion4"
+        }
+    ],
     "https://github.com/Nikosis/ComfyUI-Nikosis-Nodes": [
         [
             "AspectRatioNikosis",
@@ -18917,14 +18930,6 @@
             "title_aux": "ComfyUI-RegionalAdaptiveSampling"
         }
     ],
-    "https://github.com/SlothHole/Imitatoes": [
-        [
-            "ImitatoesSelfImprovingPrompt"
-        ],
-        {
-            "title_aux": "Imitatoes"
-        }
-    ],
     "https://github.com/Smirnov75/ComfyUI-mxToolkit": [
         [
             "mxSeed",
@@ -20335,6 +20340,25 @@
         ],
         {
             "title_aux": "comfyUI_TJ_NormalLighting"
+        }
+    ],
+    "https://github.com/TK3R/ComfyUI_TK3R_Ext": [
+        [
+            "TK3R CFG Sigma Interpolate",
+            "TK3R CLIP Text Encode With Token Count",
+            "TK3R ControlNet Apply Advanced",
+            "TK3R Image Compare",
+            "TK3R Safetensors Precision Reader",
+            "TK3R Scheduled CFG Guider",
+            "TK3RLoRARankReader",
+            "TK3RQwenImageDiffsynthControlnetAdvanced",
+            "TK3RSafetensorsPrecisionReader",
+            "TK3RSigmasInterpolate",
+            "TK3RTextEncodeQwenImageEditPlusExt",
+            "TK3RZImageFunControlnet"
+        ],
+        {
+            "title_aux": "ComfyUI TK3R Extensions"
         }
     ],
     "https://github.com/TKRLAB/ComfyUI_Prompt_List_JSON": [
@@ -39883,6 +39907,18 @@
             "title_aux": "ComfyUI-MemoryManagement"
         }
     ],
+    "https://github.com/kadima-tech/comfyui-draggen": [
+        [
+            "DraggenLocalMoodboardLoader",
+            "DraggenMoodboardImages",
+            "DraggenMoodboardRendered",
+            "DraggenMoodboardText",
+            "DraggenRemoteMoodboardLoader"
+        ],
+        {
+            "title_aux": "ComfyUI-Draggen"
+        }
+    ],
     "https://github.com/kadirnar/ComfyUI-Transformers": [
         [
             "AudioClassificationPipeline",
@@ -54523,15 +54559,6 @@
         ],
         {
             "title_aux": "ComfyUI-ImageTransformer"
-        }
-    ],
-    "https://github.com/techzuhaib/FaceCLIP-ComfyUI": [
-        [
-            "FaceCLIPSDXLGenerate",
-            "FaceCLIPTextImageEncode"
-        ],
-        {
-            "title_aux": "FaceCLIP-ComfyUI"
         }
     ],
     "https://github.com/teepunkt-esspunkt/ComfyUI-SuiteTea": [
