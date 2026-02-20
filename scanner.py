@@ -197,55 +197,44 @@ g = None
 
 parse_cnt = 0
 
-# Thread-safe git error collector
-_GIT_ERROR_COLLECTOR = {
-    'lock': threading.Lock(),
-    'by_category': defaultdict(list),  # category -> list[{'repo': str, 'op': str, 'msg': str}]
-}
+# Thread-safe git error state
+_git_error_lock = threading.Lock()
+_git_errors: defaultdict = defaultdict(list)  # category -> list[{'repo': str, 'op': str, 'msg': str}]
 
-# Ordered regex patterns for error categorization (first match wins)
-_GIT_ERROR_PATTERNS = [
-    ('repository_not_found', re.compile(
+# Ordered categories: (key, display label, compiled regex). First match wins.
+# Single source of truth — add new categories here only.
+_GIT_ERROR_CATEGORIES = [
+    ('repository_not_found', 'Repository Not Found', re.compile(
         r'repository\s+not\s+found|does\s+not\s+exist|\b404\b|remote:\s*repository\s+not\s+found',
         re.IGNORECASE
     )),
-    ('divergent_branch', re.compile(
+    ('divergent_branch', 'Divergent Branch', re.compile(
         r'divergent\s+branches|need\s+to\s+specify\s+how\s+to\s+reconcile\s+divergent\s+branches',
         re.IGNORECASE
     )),
-    ('auth_failed', re.compile(
+    ('auth_failed', 'Authentication Failed', re.compile(
         r'authentication\s+failed|could\s+not\s+read\s+username|invalid\s+username|invalid\s+password|auth\s+failed',
         re.IGNORECASE
     )),
-    ('network_error', re.compile(
+    ('network_error', 'Network Error', re.compile(
         r'could\s+not\s+resolve\s+host|connection\s+refused|timed?\s*out|failed\s+to\s+connect|'
         r'network\s+is\s+unreachable|temporary\s+failure\s+in\s+name\s+resolution',
         re.IGNORECASE
     )),
-    ('merge_conflict', re.compile(
+    ('merge_conflict', 'Merge Conflict', re.compile(
         r'merge\s+conflict|\bCONFLICT\b|automatic\s+merge\s+failed',
         re.IGNORECASE
     )),
-    ('permission_denied', re.compile(
+    ('permission_denied', 'Permission Denied', re.compile(
         r'permission\s+denied|access\s+denied|operation\s+not\s+permitted|publickey',
         re.IGNORECASE
     )),
 ]
 
-_CATEGORY_LABELS = {
-    'repository_not_found': 'Repository Not Found',
-    'divergent_branch':     'Divergent Branch',
-    'auth_failed':          'Authentication Failed',
-    'network_error':        'Network Error',
-    'merge_conflict':       'Merge Conflict',
-    'permission_denied':    'Permission Denied',
-    'other':                'Other',
-}
-
 
 def _categorize_git_error(error_str: str) -> str:
     """Classify a git error string into a category. First match wins."""
-    for category, pattern in _GIT_ERROR_PATTERNS:
+    for category, _label, pattern in _GIT_ERROR_CATEGORIES:
         if pattern.search(error_str):
             return category
     return 'other'
@@ -253,36 +242,33 @@ def _categorize_git_error(error_str: str) -> str:
 
 def _record_git_error(repo_name: str, op: str, error: Exception) -> None:
     """Record a git error in the thread-safe collector."""
-    msg = str(error)
-    # Truncate very long messages
-    if len(msg) > 200:
-        msg = msg[:197] + '...'
-    category = _categorize_git_error(msg)
-    with _GIT_ERROR_COLLECTOR['lock']:
-        _GIT_ERROR_COLLECTOR['by_category'][category].append({
-            'repo': repo_name,
-            'op': op,
-            'msg': msg,
-        })
+    category = _categorize_git_error(str(error))
+    with _git_error_lock:
+        _git_errors[category].append({'repo': repo_name, 'op': op, 'msg': str(error)})
 
 
-def _report_git_errors(errors: dict) -> None:
+def _report_git_errors() -> None:
     """Print a grouped summary of git errors by category."""
-    by_category = errors.get('by_category', {})
-    if not by_category:
+    if not _git_errors:
         return
 
-    total = sum(len(v) for v in by_category.values())
+    total = sum(len(v) for v in _git_errors.values())
     print(f"\n{'='*60}")
     print(f"Git Operation Errors Summary: {total} failure(s)")
     print(f"{'='*60}")
 
-    for category, label in _CATEGORY_LABELS.items():
-        entries = by_category.get(category, [])
+    for category, label, _pattern in _GIT_ERROR_CATEGORIES:
+        entries = _git_errors.get(category, [])
         if not entries:
             continue
         print(f"\n[{label}] ({len(entries)} repo(s))")
         for entry in entries:
+            print(f"  • {entry['repo']} ({entry['op']}): {entry['msg']}")
+
+    other_entries = _git_errors.get('other', [])
+    if other_entries:
+        print(f"\n[Other] ({len(other_entries)} repo(s))")
+        for entry in other_entries:
             print(f"  • {entry['repo']} ({entry['op']}): {entry['msg']}")
 
     print(f"{'='*60}\n")
@@ -1423,8 +1409,8 @@ def update_custom_nodes(scan_only_mode=False, url_list_file=None):
         process_git_stats(git_url_titles_preemptions)
 
     # Reset error collector before this run
-    with _GIT_ERROR_COLLECTOR['lock']:
-        _GIT_ERROR_COLLECTOR['by_category'].clear()
+    with _git_error_lock:
+        _git_errors.clear()
 
     # Git clone/pull for all repositories
     with concurrent.futures.ThreadPoolExecutor(11) as executor:
@@ -1432,7 +1418,7 @@ def update_custom_nodes(scan_only_mode=False, url_list_file=None):
             executor.submit(process_git_url_title, url, title, preemptions, node_pattern)
 
     # Report any git errors grouped by category (after all workers complete)
-    _report_git_errors(_GIT_ERROR_COLLECTOR)
+    _report_git_errors()
 
     # .py file download (skip in scan-only mode - only process git repos)
     if not scan_only_mode:
