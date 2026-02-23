@@ -1560,6 +1560,14 @@
             "title_aux": "comfyui-djb-utils"
         }
     ],
+    "https://github.com/DazzleNodes/ComfyUI-DazzleSwitch": [
+        [
+            "DazzleSwitch"
+        ],
+        {
+            "title_aux": "ComfyUI-DazzleSwitch"
+        }
+    ],
     "https://github.com/DeTK/ComfyUI-Switch": [
         [
             "NodeSwitch"
@@ -4004,14 +4012,19 @@
     "https://github.com/PozzettiAndrea/ComfyUI-TRELLIS2": [
         [
             "LoadTrellis2Models",
+            "Trellis2ApplyGuidanceInterval",
+            "Trellis2DecodeSSLatent",
+            "Trellis2Empty3DLatent",
             "Trellis2ExportGLB",
             "Trellis2ExportTrimesh",
             "Trellis2GetConditioning",
             "Trellis2ImageToShape",
+            "Trellis2LoadSSFlowModel",
             "Trellis2RasterizePBR",
             "Trellis2RemoveBackground",
             "Trellis2RenderPreview",
             "Trellis2RenderVideo",
+            "Trellis2SSConditioning",
             "Trellis2ShapeToTexturedMesh",
             "Trellis2Simplify",
             "Trellis2UVUnwrap"
@@ -7141,6 +7154,7 @@
             "KSamplerSelect",
             "Kandinsky5ImageToVideo",
             "KarrasScheduler",
+            "KlingAvatarNode",
             "KlingCameraControlI2VNode",
             "KlingCameraControlT2VNode",
             "KlingCameraControls",
@@ -7929,6 +7943,24 @@
         ],
         {
             "title_aux": "Duck_Nodes [UNSAFE]"
+        }
+    ],
+    "https://github.com/easelhub/ComfyUI_EaselHub_Nodes": [
+        [
+            "EHN_BiRefNet",
+            "EHN_ColorMatch",
+            "EHN_Florence2Tagger",
+            "EHN_GroupManager",
+            "EHN_ImageAssembly",
+            "EHN_ImageComparer",
+            "EHN_ImageResize",
+            "EHN_ImageTileBatch",
+            "EHN_ModelBus",
+            "EHN_PromptProcess",
+            "EHN_Seed"
+        ],
+        {
+            "title_aux": "ComfyUI_EaselHub_Nodes"
         }
     ],
     "https://github.com/eddiehavila/comfyui-nachoman": [
@@ -10426,6 +10458,7 @@
     ],
     "https://github.com/lihaoyun6/ComfyUI-lhyNodes": [
         [
+            "AnyToAny",
             "BlockifyMask_lhy",
             "CLIPName",
             "CLIPVisionName",
@@ -10435,6 +10468,7 @@
             "ControlNetName",
             "CudaDevicePatcher",
             "DrawMaskOnImage_lhy",
+            "DrawViTPose_lhy",
             "GrowMask_lhy",
             "ImageBatchtoImageList",
             "ImageBatchtoImages",
@@ -13094,6 +13128,7 @@
             "ConsoleLog",
             "CreateProjectStructure",
             "DebugConditioningStructure",
+            "FixJson",
             "FormatDatePath",
             "ImageBatchCrop",
             "ImageGridCropper",
@@ -13111,6 +13146,7 @@
             "JsonPromptToTextPromptConverter",
             "JsonRootListExtractor",
             "JsonSerializeObject",
+            "JsonToPromptNode",
             "JsonToString",
             "ListItemExtractor",
             "LoadImageWithMetadata",

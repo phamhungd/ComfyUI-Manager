@@ -2791,6 +2791,16 @@
             "title_aux": "ComfyUI UX Nodes"
         }
     ],
+    "https://github.com/AnonBOTpl/ComfyUI-Qwen-Prompt-Expander": [
+        [
+            "QwenDiagnostics",
+            "QwenOfflinePrompt"
+        ],
+        {
+            "nodename_pattern": "QwenOfflinePrompt",
+            "title_aux": "ComfyUI Qwen Prompt Expander"
+        }
+    ],
     "https://github.com/Anzhc/SDXL-Flux2VAE-ComfyUI-Node": [
         [
             "EmptySDXLFlux2LatentImage"
@@ -6001,6 +6011,14 @@
             "title_aux": "Discord Webhook"
         }
     ],
+    "https://github.com/DazzleNodes/ComfyUI-DazzleSwitch": [
+        [
+            "DazzleSwitch"
+        ],
+        {
+            "title_aux": "ComfyUI-DazzleSwitch"
+        }
+    ],
     "https://github.com/DazzleNodes/ComfyUI-Smart-Resolution-Calc": [
         [
             "SmartResolutionCalc"
@@ -6011,6 +6029,7 @@
     ],
     "https://github.com/DazzleNodes/DazzleNodes": [
         [
+            "DazzleSwitch",
             "FitMaskToImage",
             "JDC_AutoContrast",
             "JDC_BlendImages",
@@ -20918,6 +20937,19 @@
             "title_aux": "ComfyUI-TkNodes"
         }
     ],
+    "https://github.com/Terpentinas/EasyLoRAMerger": [
+        [
+            "EasyLoRABaseMerger",
+            "EasyLoRATripleMerger",
+            "EasyLoRAmerger",
+            "EasyLoRAonlyMerger",
+            "MusubiLoraConverter",
+            "ZImageNormalizer"
+        ],
+        {
+            "title_aux": "EasyLoRAMerger"
+        }
+    ],
     "https://github.com/TheArtOfficial/ComfyUI-MaskMorph": [
         [
             "DirectionalMaskExpand",
@@ -25941,15 +25973,6 @@
         ],
         {
             "title_aux": "ComfyUI-Photoreal-Prompt-Builder"
-        }
-    ],
-    "https://github.com/artokun/ComfyUI-Stereo-Gaussian": [
-        [
-            "SBSConcat",
-            "StereoGaussianRender"
-        ],
-        {
-            "title_aux": "ComfyUI-Stereo-Gaussian"
         }
     ],
     "https://github.com/asaddi/ComfyUI-YALLM-node": [
@@ -30998,6 +31021,7 @@
             "KSamplerSelect",
             "Kandinsky5ImageToVideo",
             "KarrasScheduler",
+            "KlingAvatarNode",
             "KlingCameraControlI2VNode",
             "KlingCameraControlT2VNode",
             "KlingCameraControls",
@@ -34078,6 +34102,7 @@
             "JSONLoaderCustom1",
             "JSONLoaderCustom3",
             "JSONLoaderCustom6",
+            "JSONLoaderDynamic",
             "JSONLoaderLoRA",
             "JSONLoaderStandard",
             "JSONLoaderVACE"
@@ -37784,6 +37809,7 @@
             "Clear Folder",
             "Clear Folder By Pattern",
             "ColabKeepAlive",
+            "CollectFiles",
             "File List Loader",
             "File List To File Path",
             "Fix Dimensions",
@@ -37802,10 +37828,16 @@
             "Set Value For MC V2V V2",
             "Set Value With Path",
             "SetValuesFromPanel",
+            "SimpleForLoopEnd",
+            "SimpleForLoopStart",
+            "SimpleWhileClose",
+            "SimpleWhileOpen",
             "SplitMP3",
             "TunnelAutoReconnect",
             "VF9_SetValue",
             "VHS_ExtractVideoPath",
+            "_LoopAdd",
+            "_LoopLessThan",
             "image_to_sha256",
             "move_file",
             "rename_file",
@@ -45483,7 +45515,8 @@
             "Expo Lmstudio Unified",
             "ExpoLmstudioImageToText",
             "ExpoLmstudioTextGeneration",
-            "ExpoLmstudioUnified"
+            "ExpoLmstudioUnified",
+            "Random List Picker"
         ],
         {
             "author": "Matt John Powell",
@@ -46002,6 +46035,8 @@
         [
             "AnchorFrameExtractor",
             "BatchColorCorrector",
+            "BoundaryFrameExtractor",
+            "BoundaryFrameSplicer",
             "ContextImageExtractor",
             "ControlEndFrameExtractor",
             "ControlImageSlicer",
@@ -46272,6 +46307,7 @@
             "LatentUpscaleAndCropTiles_MiraSubPack",
             "MiraITUPipelineCombine_MiraSubPack",
             "MiraITUPipelineExtract_MiraSubPack",
+            "MiraImageUpscaleCalculator_MiraSubPack",
             "OverlappedImageMerge_MiraSubPack",
             "OverlappedLatentMerge_MiraSubPack",
             "Qwen3VL_MiraSubPack",

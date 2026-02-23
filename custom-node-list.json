@@ -36887,6 +36887,16 @@
             "description": "Flexible resolution and latent generation for ComfyUI with toggle-based dimension inputs and automatic calculation of missing values"
         },
         {
+            "author": "DazzleNodes",
+            "title": "ComfyUI-DazzleSwitch",
+            "reference": "https://github.com/DazzleNodes/ComfyUI-DazzleSwitch",
+            "files": [
+                "https://github.com/DazzleNodes/ComfyUI-DazzleSwitch"
+            ],
+            "install_type": "git-clone",
+            "description": "Smart switch node for ComfyUI with dropdown-based input selection and INT override for cascading workflows. Route any data type through a named dropdown instead of moving noodles."
+        },
+        {
             "author": "yannickcruz",
             "title": "ComfyUI YSC HighRes-Fix",
             "reference": "https://github.com/yannickcruz/ComfyUI_YSC_HighResFix",
@@ -43323,16 +43333,6 @@
             "description": "Bridges ComfyUI's native AUDIO type to raw audio tensors (VCAUDIOTENSOR) for MuseTalk, VoiceCraft, and more."
         },
         {
-            "author": "artokun",
-            "title": "ComfyUI-Stereo-Gaussian",
-            "reference": "https://github.com/artokun/ComfyUI-Stereo-Gaussian",
-            "files": [
-                "https://github.com/artokun/ComfyUI-Stereo-Gaussian"
-            ],
-            "install_type": "git-clone",
-            "description": "Stereoscopic VR rendering from 3D Gaussian Splats for ComfyUI"
-        },
-        {
             "author": "luckdvr",
             "title": "comfyui-image-annotator",
             "reference": "https://github.com/luckdvr/comfyui-image-annotator",
@@ -43400,6 +43400,16 @@
               "privacy"
             ],
             "nodename_pattern": "QwenOfflinePrompt"
+        },
+        {
+            "author": "Terpentinas",
+            "title": "EasyLoRAMerger",
+            "reference": "https://github.com/Terpentinas/EasyLoRAMerger",
+            "files": [
+                "https://github.com/Terpentinas/EasyLoRAMerger"
+            ],
+            "install_type": "git-clone",
+            "description": "A versatile LoRA merger for Flux (4B/9B/Dev), Z-Image, and SDXL. Features cross-architecture scaling, weight normalization, and live model baking."
         },
 
 

@@ -1,6 +1,16 @@
 {
     "custom_nodes": [
         {
+            "author": "DazzleNodes",
+            "title": "ComfyUI-DazzleSwitch",
+            "reference": "https://github.com/DazzleNodes/ComfyUI-DazzleSwitch",
+            "files": [
+                "https://github.com/DazzleNodes/ComfyUI-DazzleSwitch"
+            ],
+            "install_type": "git-clone",
+            "description": "Smart switch node for ComfyUI with dropdown-based input selection and INT override for cascading workflows. Route any data type through a named dropdown instead of moving noodles."
+        },
+        {
             "author": "easelhub",
             "title": "ComfyUI_EaselHub_Nodes",
             "reference": "https://github.com/easelhub/ComfyUI_EaselHub_Nodes",

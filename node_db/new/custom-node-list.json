@@ -1,6 +1,16 @@
 {
     "custom_nodes": [
         {
+            "author": "Terpentinas",
+            "title": "EasyLoRAMerger",
+            "reference": "https://github.com/Terpentinas/EasyLoRAMerger",
+            "files": [
+                "https://github.com/Terpentinas/EasyLoRAMerger"
+            ],
+            "install_type": "git-clone",
+            "description": "A versatile LoRA merger for Flux (4B/9B/Dev), Z-Image, and SDXL. Features cross-architecture scaling, weight normalization, and live model baking."
+        },
+        {
             "author": "AnonBOTpl",
             "title": "ComfyUI Qwen Prompt Expander",
             "reference": "https://github.com/AnonBOTpl/ComfyUI-Qwen-Prompt-Expander",
