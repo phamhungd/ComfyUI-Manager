@@ -4282,6 +4282,14 @@
             "title_aux": "ComfyUI-Groudingdino-Sam"
         }
     ],
+    "https://github.com/Ronnasayd/comfyui-nodes": [
+        [
+            "PixelatedBorderNode"
+        ],
+        {
+            "title_aux": "comfyui-nodes"
+        }
+    ],
     "https://github.com/Rosegun007/ComfyUI-Pandora": [
         [
             "Image Fill Color | Pandora",
@@ -5006,22 +5014,6 @@
         ],
         {
             "title_aux": "comfyui-tools"
-        }
-    ],
-    "https://github.com/StoryWalker/comfyui_flux_collection_advanced": [
-        [
-            "FluxControlNetApply",
-            "FluxControlNetApplyPreview",
-            "FluxControlNetLoader",
-            "FluxGGUFLoader",
-            "FluxImagePreview",
-            "FluxImageUpscaler",
-            "FluxLoader",
-            "FluxSamplerParameters",
-            "FluxTextPrompt"
-        ],
-        {
-            "title_aux": "comfyui_flux_collection_advanced [WIP]"
         }
     ],
     "https://github.com/SushantSingh-23-01/comfyui_flowrider_nodes": [
@@ -8452,6 +8444,7 @@
             "LibberApply",
             "LibberManager",
             "MaskProcessor",
+            "MultiLoraLoader",
             "NodeInputSelect",
             "OpaqueAlpha",
             "PromptComposer",

@@ -1,6 +1,46 @@
 {
     "custom_nodes": [
         {
+            "author": "easelhub",
+            "title": "ComfyUI_EaselHub_Nodes",
+            "reference": "https://github.com/easelhub/ComfyUI_EaselHub_Nodes",
+            "files": [
+                "https://github.com/easelhub/ComfyUI_EaselHub_Nodes"
+            ],
+            "install_type": "git-clone",
+            "description": "Collection of ComfyUI nodes for image processing, model management, and prompt generation including BiRefNet, Florence2Tagger, and image manipulation tools. (Description by CC)"
+        },
+        {
+            "author": "itom0717",
+            "title": "ComfyUI-Prompt-Selector",
+            "reference": "https://github.com/itom0717/ComfyUI-Prompt-Selector",
+            "files": [
+                "https://github.com/itom0717/ComfyUI-Prompt-Selector"
+            ],
+            "install_type": "git-clone",
+            "description": "No ComfyUI nodes detected. May not be a ComfyUI custom node repository."
+        },
+        {
+            "author": "Echoflare",
+            "title": "ComfyUI-Reverse-Proxy-Fix",
+            "reference": "https://github.com/Echoflare/ComfyUI-Reverse-Proxy-Fix",
+            "files": [
+                "https://github.com/Echoflare/ComfyUI-Reverse-Proxy-Fix"
+            ],
+            "install_type": "git-clone",
+            "description": "A custom node for fixing the \"405 Method Not Allowed\" issue on certain endpoints when reverse proxying ComfyUI."
+        },
+        {
+            "author": "Ronnasayd",
+            "title": "comfyui-nodes",
+            "reference": "https://github.com/Ronnasayd/comfyui-nodes",
+            "files": [
+                "https://github.com/Ronnasayd/comfyui-nodes"
+            ],
+            "install_type": "git-clone",
+            "description": "A collection of custom nodes for ComfyUI"
+        },
+        {
             "author": "vjumpkung",
             "title": "comfyui-mosaic-blur [NAME CONFLICT]",
             "reference": "https://github.com/vjumpkung/comfyui-mosaic-blur",
