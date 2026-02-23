@@ -11508,6 +11508,7 @@
     ],
     "https://github.com/K3NK3/ComfyUI-K3NKImageGrab": [
         [
+            "K3NKFindNearestBucket",
             "K3NKImageGrab",
             "K3NKImageLoaderWithBlending",
             "K3NKSaveLatentPassThrought"
@@ -34094,6 +34095,8 @@
             "Character Prompt Builder Male Person",
             "Character Prompt Builder Male Poses",
             "Character Prompt Builder Scene",
+            "Character Prompt Builder Spaceship Character",
+            "Character Prompt Builder Spaceship Mods",
             "renderPrompt"
         ],
         {
@@ -59038,6 +59041,7 @@
             "easy stylesSelector",
             "easy sv3dLoader",
             "easy svdLoader",
+            "easy tableEditor",
             "easy textIndexSwitch",
             "easy textSwitch",
             "easy ultralyticsDetectorPipe",

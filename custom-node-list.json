@@ -43382,6 +43382,25 @@
             "install_type": "git-clone",
             "description": "ComfyUI acceleration extension designed specifically for the 170HX GPU that enhances inference performance by optimizing specific operators based on academic research."
         },
+        {
+            "author": "AnonBOTpl",
+            "title": "ComfyUI Qwen Prompt Expander",
+            "reference": "https://github.com/AnonBOTpl/ComfyUI-Qwen-Prompt-Expander",
+            "files": [
+                "https://github.com/AnonBOTpl/ComfyUI-Qwen-Prompt-Expander"
+            ],
+            "install_type": "git-clone",
+            "description": "Local AI prompt generator using Qwen/SmolLM2 models. 100% offline and private. Supports 4-bit/8-bit quantization. Runs on 6GB VRAM GPUs alongside Stable Diffusion. Smart token management, Polish-English translation, embedding support, OOM protection.",
+            "tags": [
+              "prompt",
+              "AI",
+              "LLM",
+              "offline",
+              "translation",
+              "privacy"
+            ],
+            "nodename_pattern": "QwenOfflinePrompt"
+        },
 
 
 
@@ -43777,25 +43796,6 @@
             ],
             "install_type": "unzip",
             "description": "This is a node to convert an image into a CMYK Halftone dot image."
-        },
-        {
-            "author": "AnonBOTpl",
-            "title": "ComfyUI Qwen Prompt Expander",
-            "reference": "https://github.com/AnonBOTpl/ComfyUI-Qwen-Prompt-Expander",
-            "files": [
-                "https://github.com/AnonBOTpl/ComfyUI-Qwen-Prompt-Expander"
-            ],
-            "install_type": "git-clone",
-            "description": "Local AI prompt generator using Qwen/SmolLM2 models. 100% offline and private. Supports 4-bit/8-bit quantization. Runs on 6GB VRAM GPUs alongside Stable Diffusion. Smart token management, Polish-English translation, embedding support, OOM protection.",
-            "tags": [
-              "prompt",
-              "AI",
-              "LLM",
-              "offline",
-              "translation",
-              "privacy"
-            ],
-            "nodename_pattern": "QwenOfflinePrompt"
-           }
-         ]
+        }
+    ]
 }
