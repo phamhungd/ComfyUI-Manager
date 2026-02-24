@@ -1,13 +1,15 @@
 import { app } from "../../scripts/app.js";
 import { $el, ComfyDialog } from "../../scripts/ui.js";
+import { customAlert } from "./common.js";
+
 const env = "prod";
 
 let DEFAULT_HOMEPAGE_URL = "https://copus.io";
 
-let API_ENDPOINT = "https://api.client.prod.copus.io/copus-client";
+let API_ENDPOINT = "https://api.client.prod.copus.io";
 
 if (env !== "prod") {
-  API_ENDPOINT = "https://api.dev.copus.io/copus-client";
+  API_ENDPOINT = "https://api.test.copus.io";
   DEFAULT_HOMEPAGE_URL = "https://test.copus.io";
 }
 
@@ -61,6 +63,7 @@ export class CopusShareDialog extends ComfyDialog {
       [$el("div.comfy-modal-content", {}, [...this.createButtons()])]
     );
     this.selectedOutputIndex = 0;
+    this.selectedOutput_lock = 0;
     this.selectedNodeId = null;
     this.uploadedImages = [];
     this.allFilesImages = [];
@@ -68,7 +71,7 @@ export class CopusShareDialog extends ComfyDialog {
     this.allFiles = [];
     this.titleNum = 0;
   }
-  
+
   createButtons() {
     const inputStyle = {
       display: "block",
@@ -190,10 +193,38 @@ export class CopusShareDialog extends ComfyDialog {
       type: "text",
       placeholder: "Subtitle (Optional)",
       style: inputStyle,
-      maxLength: "70",
+      maxLength: "350",
       oninput: () => {
         const titleNum = this.SubTitleInput.value.length;
-        subTitleNumDom.textContent = `${titleNum}/70`;
+        subTitleNumDom.textContent = `${titleNum}/350`;
+      },
+    });
+    this.LockInput = $el("input", {
+      type: "text",
+      placeholder: "0",
+      style: {
+        width: "100px",
+        padding: "7px",
+        paddingLeft: "30px",
+        borderRadius: "4px",
+        border: "1px solid #ddd",
+        boxSizing: "border-box",
+        position: "relative",
+      },
+      oninput: (event) => {
+        let input = event.target.value;
+        // Use a regular expression to match a number with up to two decimal places
+        const regex = /^\d*\.?\d{0,2}$/;
+        if (!regex.test(input)) {
+          // If the input doesn't match, remove the last entered character
+          event.target.value = input.slice(0, -1);
+        }
+        const numericValue = parseFloat(input);
+        if (numericValue > 9999) {
+          input = "9999";
+        }
+        // Update the input field with the valid value
+        event.target.value = input;
       },
     });
     this.descriptionInput = $el("textarea", {
@@ -272,7 +303,7 @@ export class CopusShareDialog extends ComfyDialog {
       },
       []
     );
-    
+
     const titleNumDom = $el(
       "label",
       {
@@ -297,7 +328,7 @@ export class CopusShareDialog extends ComfyDialog {
           color: "#999",
         },
       },
-      ["0/70"]
+      ["0/350"]
     );
     const descriptionNumDom = $el(
       "label",
@@ -313,15 +344,11 @@ export class CopusShareDialog extends ComfyDialog {
       ["0/70"]
     );
     // Additional Inputs Section
-    const additionalInputsSection = $el(
-      "div",
-      { style: { ...sectionStyle,  } },
-      [
-        $el("label", { style: labelStyle }, ["3️⃣ Title "]),
-        this.TitleInput,
-        titleNumDom,
-      ]
-    );
+    const additionalInputsSection = $el("div", { style: { ...sectionStyle } }, [
+      $el("label", { style: labelStyle }, ["3️⃣ Title "]),
+      this.TitleInput,
+      titleNumDom,
+    ]);
     const SubtitleSection = $el("div", { style: sectionStyle }, [
       $el("label", { style: labelStyle }, ["4️⃣ Subtitle "]),
       this.SubTitleInput,
@@ -333,6 +360,101 @@ export class CopusShareDialog extends ComfyDialog {
       // descriptionNumDom,
     ]);
     // switch  between outputs section and additional inputs section
+    this.radioButtons_lock = [];
+
+    this.radioButtonsCheck_lock = $el("input", {
+      type: "radio",
+      name: "output_type_lock",
+      value: "0",
+      id: "blockchain1_lock",
+      checked: true,
+    });
+    this.radioButtonsCheckOff_lock = $el("input", {
+      type: "radio",
+      name: "output_type_lock",
+      value: "1",
+      id: "blockchain_lock",
+    });
+
+    const blockChainSection_lock = $el("div", { style: sectionStyle }, [
+      $el("label", { style: labelStyle }, ["6️⃣ Download threshold"]),
+      $el(
+        "label",
+        {
+          style: {
+            marginTop: "10px",
+            display: "flex",
+            alignItems: "center",
+            cursor: "pointer",
+          },
+        },
+        [
+          this.radioButtonsCheck_lock,
+          $el(
+            "div",
+            {
+              style: {
+                marginLeft: "5px",
+                display: "flex",
+                alignItems: "center",
+                position: "relative",
+              },
+            },
+            [
+              $el("span", { style: { marginLeft: "5px" } }, ["ON"]),
+              $el(
+                "span",
+                {
+                  style: {
+                    marginLeft: "20px",
+                    marginRight: "10px",
+                    color: "#fff",
+                  },
+                },
+                ["Unlock with"]
+              ),
+              $el("img", {
+                style: {
+                  width: "16px",
+                  height: "16px",
+                  position: "absolute",
+                  right: "75px",
+                  zIndex: "100",
+                },
+                src: "https://static.copus.io/images/admin/202507/prod/e2919a1d8f3c2d99d3b8fe27ff94b841.png",
+              }),
+              this.LockInput,
+            ]
+          ),
+        ]
+      ),
+      $el(
+        "label",
+        { style: { display: "flex", alignItems: "center", cursor: "pointer" } },
+        [
+          this.radioButtonsCheckOff_lock,
+          $el(
+            "div",
+            {
+              style: {
+                marginLeft: "5px",
+                display: "flex",
+                alignItems: "center",
+              },
+            },
+            [$el("span", { style: { marginLeft: "5px" } }, ["OFF"])]
+          ),
+        ]
+      ),
+
+      $el(
+        "p",
+        { style: { fontSize: "16px", color: "#fff", margin: "10px 0 0 0" } },
+        [
+        ]
+      ),
+    ]);
+
     this.radioButtons = [];
 
     this.radioButtonsCheck = $el("input", {
@@ -350,7 +472,7 @@ export class CopusShareDialog extends ComfyDialog {
     });
 
     const blockChainSection = $el("div", { style: sectionStyle }, [
-      $el("label", { style: labelStyle }, ["6️⃣ Store on blockchain "]),
+      $el("label", { style: labelStyle }, ["8️⃣ Store on blockchain "]),
       $el(
         "label",
         {
@@ -380,6 +502,141 @@ export class CopusShareDialog extends ComfyDialog {
         ["Secure ownership with a permanent & decentralized storage"]
       ),
     ]);
+
+    this.ratingRadioButtonsCheck0 = $el("input", {
+      type: "radio",
+      name: "content_rating",
+      value: "0",
+      id: "content_rating0",
+    });
+    this.ratingRadioButtonsCheck1 = $el("input", {
+      type: "radio",
+      name: "content_rating",
+      value: "1",
+      id: "content_rating1",
+    });
+    this.ratingRadioButtonsCheck2 = $el("input", {
+      type: "radio",
+      name: "content_rating",
+      value: "2",
+      id: "content_rating2",
+    });
+    this.ratingRadioButtonsCheck_1 = $el("input", {
+      type: "radio",
+      name: "content_rating",
+      value: "-1",
+      id: "content_rating_1",
+      checked: true,
+    });
+
+    // content rating
+    const contentRatingSection = $el("div", { style: sectionStyle }, [
+      $el("label", { style: labelStyle }, ["7️⃣ Content rating "]),
+      $el(
+        "label",
+        {
+          style: {
+            marginTop: "10px",
+            display: "flex",
+            alignItems: "center",
+            cursor: "pointer",
+          },
+        },
+        [
+          this.ratingRadioButtonsCheck0,
+          $el("img", {
+            style: {
+              width: "12px",
+              height: "12px",
+              marginLeft: "5px",
+            },
+            src: "https://static.copus.io/images/client/202507/test/b9f17da83b054d53cd0cb4508c2c30dc.png",
+          }),
+          $el("span", { style: { marginLeft: "5px", color: "#fff" } }, [
+            "All ages",
+          ]),
+        ]
+      ),
+      $el(
+        "p",
+        { style: { fontSize: "10px", color: "#fff", marginLeft: "20px" } },
+        ["Safe for all viewers; no profanity, violence, or mature themes."]
+      ),
+      $el(
+        "label",
+        { style: { display: "flex", alignItems: "center", cursor: "pointer" } },
+        [
+          this.ratingRadioButtonsCheck1,
+          $el("img", {
+            style: {
+              width: "12px",
+              height: "12px",
+              marginLeft: "5px",
+            },
+            src: "https://static.copus.io/images/client/202507/test/7848bc0d3690671df21c7cf00c4cfc81.png",
+          }),
+          $el("span", { style: { marginLeft: "5px", color: "#fff" } }, [
+            "13+ (Teen)",
+          ]),
+        ]
+      ),
+      $el(
+        "p",
+        { style: { fontSize: "10px", color: "#fff", marginLeft: "20px" } },
+        [
+          "Mild language, light themes, or cartoon violence; no explicit content. ",
+        ]
+      ),
+      $el(
+        "label",
+        { style: { display: "flex", alignItems: "center", cursor: "pointer" } },
+        [
+          this.ratingRadioButtonsCheck2,
+          $el("img", {
+            style: {
+              width: "12px",
+              height: "12px",
+              marginLeft: "5px",
+            },
+            src: "https://static.copus.io/images/client/202507/test/bc51839c208d68d91173e43c23bff039.png",
+          }),
+          $el("span", { style: { marginLeft: "5px", color: "#fff" } }, [
+            "18+ (Explicit)",
+          ]),
+        ]
+      ),
+      $el(
+        "p",
+        { style: { fontSize: "10px", color: "#fff", marginLeft: "20px" } },
+        [
+          "Explicit content, including sexual content, strong violence, or intense themes. ",
+        ]
+      ),
+      $el(
+        "label",
+        { style: { display: "flex", alignItems: "center", cursor: "pointer" } },
+        [
+          this.ratingRadioButtonsCheck_1,
+          $el("img", {
+            style: {
+              width: "12px",
+              height: "12px",
+              marginLeft: "5px",
+            },
+            src: "https://static.copus.io/images/client/202507/test/5c802fdcaaea4e7bbed37393eec0d5ba.png",
+          }),
+          $el("span", { style: { marginLeft: "5px", color: "#fff" } }, [
+            "Not Rated",
+          ]),
+        ]
+      ),
+      $el(
+        "p",
+        { style: { fontSize: "10px", color: "#fff", marginLeft: "20px" } },
+        ["No age rating provided."]
+      ),
+    ]);
+
     // Message Section
     this.message = $el(
       "div",
@@ -441,6 +698,8 @@ export class CopusShareDialog extends ComfyDialog {
       SubtitleSection,
       DescriptionSection,
       // contestSection,
+      blockChainSection_lock,
+      contentRatingSection,
       blockChainSection,
       this.message,
       buttonsSection,
@@ -449,7 +708,7 @@ export class CopusShareDialog extends ComfyDialog {
     return layout;
   }
   /**
-   * api 
+   * api
    * @param {url} path
    * @param {params} options
    * @param {statusText} statusText
@@ -502,7 +761,9 @@ export class CopusShareDialog extends ComfyDialog {
           url: data,
         });
       } else {
-        throw new Error("make sure your API key is correct and try again later");
+        throw new Error(
+          "make sure your API key is correct and try again later"
+        );
       }
     } catch (e) {
       if (e?.response?.status === 413) {
@@ -520,7 +781,7 @@ export class CopusShareDialog extends ComfyDialog {
       this.shareButton.textContent = "Sharing...";
       await this.share();
     } catch (e) {
-      alert(e.message);
+      customAlert(e.message);
     }
     this.shareButton.disabled = false;
     this.shareButton.textContent = "Share";
@@ -543,6 +804,15 @@ export class CopusShareDialog extends ComfyDialog {
       subTitle: this.SubTitleInput.value,
       content: this.descriptionInput.value,
       storeOnChain: this.radioButtonsCheck.checked ? true : false,
+      lockState: this.radioButtonsCheck_lock.checked ? 2 : 0,
+      unlockPrice: this.LockInput.value,
+      rating: this.ratingRadioButtonsCheck0.checked
+        ? 0
+        : this.ratingRadioButtonsCheck1.checked
+        ? 1
+        : this.ratingRadioButtonsCheck2.checked
+        ? 2
+        : -1,
     };
 
     if (!this.keyInput.value) {
@@ -555,6 +825,12 @@ export class CopusShareDialog extends ComfyDialog {
 
     if (!form_values.title) {
       throw new Error("Title is required");
+    }
+
+    if (this.radioButtonsCheck_lock.checked) {
+      if (!this.LockInput.value) {
+        throw new Error("Price is required");
+      }
     }
 
     if (!this.uploadedImages.length) {
@@ -602,23 +878,23 @@ export class CopusShareDialog extends ComfyDialog {
         "Uploading workflow..."
       );
 
-     if (res.status && res.data.status && res.data) {
-      localStorage.setItem("copus_token",this.keyInput.value);
-       const { data } = res.data;
-       if (data) {
-         const url = `${DEFAULT_HOMEPAGE_URL}/work/${data}`;
-         this.message.innerHTML = `Workflow has been shared successfully. <a href="${url}" target="_blank">Click here to view it.</a>`;
-         this.previewImage.src = "";
-         this.previewImage.style.display = "none";
-         this.uploadedImages = [];
-         this.allFilesImages = [];
-         this.allFiles = [];
-         this.TitleInput.value = "";
-         this.SubTitleInput.value = "";
-         this.descriptionInput.value = "";
-         this.selectedFile = null;
-       }
-     }
+      if (res.status && res.data.status && res.data) {
+        localStorage.setItem("copus_token", this.keyInput.value);
+        const { data } = res.data;
+        if (data) {
+          const url = `${DEFAULT_HOMEPAGE_URL}/work/${data}`;
+          this.message.innerHTML = `Workflow has been shared successfully. <a href="${url}" target="_blank">Click here to view it.</a>`;
+          this.previewImage.src = "";
+          this.previewImage.style.display = "none";
+          this.uploadedImages = [];
+          this.allFilesImages = [];
+          this.allFiles = [];
+          this.TitleInput.value = "";
+          this.SubTitleInput.value = "";
+          this.descriptionInput.value = "";
+          this.selectedFile = null;
+        }
+      }
     } catch (e) {
       throw new Error("Error sharing workflow: " + e.message);
     }
@@ -664,7 +940,7 @@ export class CopusShareDialog extends ComfyDialog {
     this.element.style.display = "block";
     this.previewImage.src = "";
     this.previewImage.style.display = "none";
-    this.keyInput.value = apiToken!=null?apiToken:"";
+    this.keyInput.value = apiToken != null ? apiToken : "";
     this.uploadedImages = [];
     this.allFilesImages = [];
     this.allFiles = [];
